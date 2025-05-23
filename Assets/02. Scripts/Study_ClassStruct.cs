@@ -37,7 +37,8 @@ public class Study_ClassStruct : MonoBehaviour
         Debug.Log("구조체 ---------------------------");
         Study_Struct s1 = new Study_Struct(10);
         Study_Struct s2 = s1;
-        Debug.Log($"s1 : {s1.number} / s2 : {s2.number}");
+        Study_Struct s3 = s2;
+        Debug.Log($"s1 : {s1.number} / s2 : {s2.number} / s3 : {s3.number}");
         
         s1.number = 100;
         Debug.Log($"s1 : {s1.number} / s2 : {s2.number}");
