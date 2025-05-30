@@ -4,7 +4,8 @@ public class RouletteController : MonoBehaviour
 {
     public float rotSpeed;
 
-    public bool isStop; // false
+    public bool isStop;
+    public bool isRotating;
 
     void Start()
     {
@@ -19,12 +20,14 @@ public class RouletteController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             rotSpeed = 5f;
+            isRotating = true; // 룰렛이 도는 중
         }
 
         // 키보드 스페이스 버튼을 눌렀을 때 -> 1번 실행
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isStop = true;
+            if (isRotating) // 만약 돌고 있다면
+                isStop = true; // 감속 시작
         }
             
         if (isStop) // isStop == true || if (!isStop) // isStop == false
@@ -34,6 +37,7 @@ public class RouletteController : MonoBehaviour
             if (rotSpeed < 0.01f)
             {
                 rotSpeed = 0f;
+                isRotating = false;
                 isStop = false;
             }
         }
